@@ -1,0 +1,5 @@
+// GENERATED FILE - DO NOT EDIT
+include ":"
+include ":CordovaLib"
+include ":com.inffinix.plugins:google-play-services_lib"
+project(":com.inffinix.plugins:google-play-services_lib").projectDir = new File("com.inffinix.plugins/inffinix-google-play-services_lib")

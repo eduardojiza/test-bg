@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.inffinix.plugins"
+        version="2.0.0">
+
+    <name>Background Service Plugin file transfer</name>
+
+    <description>
+        it uploads files
+    </description>
+
+    <license>Apache 2.0</license>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+
+	<!-- Load in the core background service -->
+	<dependency id="com.red_folder.phonegap.plugin.backgroundservice" url="https://github.com/Red-Folder/bgs-core.git"/>
+
+    <!-- android -->
+    <platform name="android">
+		<js-module src="www/networkService.js" name="NetworkService">
+			<clobbers target="cordova.plugins.networkService" />
+		</js-module>
+
+        <framework src="libs/google-play-services_lib" custom="true" />
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="com.inffinix.plugins.NetworkService">
+                <intent-filter>         
+                    <action android:name="com.inffinix.plugins.NetworkService"/> 
+                </intent-filter>     
+            </service>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+        </config-file>
+        
+        <source-file src="src/android/NetworkService.java" target-dir="src/com/inffinix/plugins" />
+        <source-file src="src/android/HttpFileUploader.java" target-dir="src/com/inffinix/plugins" />
+    </platform>
+	
+</plugin>
