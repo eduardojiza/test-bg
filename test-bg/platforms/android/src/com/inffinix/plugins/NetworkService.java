@@ -3,6 +3,7 @@ package com.inffinix.plugins;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -168,12 +169,8 @@ public class NetworkService extends BackgroundService implements GoogleApiClient
                 userLocation = element.getString( KEY_USER_LOCATION );
                 passlocation = element.getString( KEY_PASSWORD_LOCATION );
                 configurationTracking = new ConfigurationTracking( uriLocation, passlocation, userLocation, 0.0, 0.0  );
-                if( configurationTrackingDAO == null ) {
-                    configurationTrackingDAO = new ConfigurationTrackingDAOImple(this);
-                    configurationTrackingDAO.insert( configurationTracking  );
-                } else {
-                    configurationTrackingDAO.insert( configurationTracking  );
-                }
+                configurationTrackingDAO = new ConfigurationTrackingDAOImple(this);
+                configurationTrackingDAO.insert( configurationTracking  );
             } catch (JSONException e) {
                 Log.d( TAG, "--------------------- Estructura invalida para configuracion de envio de geolocalizacion -----------------------" );
             }
@@ -204,12 +201,10 @@ public class NetworkService extends BackgroundService implements GoogleApiClient
     public void onConnected(Bundle bundle) {
         Log.d(TAG, "--------------------- onConnected ---------------------");
         if ( !mRequestingLocationUpdates ) {
-            if( configurationTrackingDAO == null ) {
-                configurationTrackingDAO = new ConfigurationTrackingDAOImple(this);
-                configurationTracking = configurationTrackingDAO.getConfig();
-            } else {
-                configurationTracking = configurationTrackingDAO.getConfig();
-            }
+            configurationTrackingDAO = new ConfigurationTrackingDAOImple(this);
+            configurationTracking = configurationTrackingDAO.getConfig();
+            System.out.println( "informacion obtenida" + configurationTracking );
+            setDataLocation();
             startLocationUpdates();
             mRequestingLocationUpdates = true;
         }
@@ -308,12 +303,10 @@ public class NetworkService extends BackgroundService implements GoogleApiClient
     }
 
     private void setDataLocation(){
-        if( configurationTracking != null ) {
-            if( configurationTracking.getServerLocation() != null && configurationTracking.getPassword() != null && configurationTracking.getLogin() != null ) {
-                uriLocation = configurationTracking.getServerLocation();
-                userLocation = configurationTracking.getLogin();
-                passlocation = configurationTracking.getPassword();
-            }
+        if( configurationTracking.getServerLocation() != null && configurationTracking.getPassword() != null && configurationTracking.getLogin() != null ) {
+            uriLocation = configurationTracking.getServerLocation();
+            userLocation = configurationTracking.getLogin();
+            passlocation = configurationTracking.getPassword();
         }
     }
 
