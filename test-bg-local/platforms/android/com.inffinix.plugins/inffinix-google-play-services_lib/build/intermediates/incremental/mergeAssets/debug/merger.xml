@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/eduardo/lab/phonegap/test-bg-local/platforms/android/com.inffinix.plugins/inffinix-google-play-services_lib/assets"/></dataSet><dataSet config="debug"><source path="/Users/eduardo/lab/phonegap/test-bg-local/platforms/android/com.inffinix.plugins/inffinix-google-play-services_lib/src/debug/assets"/></dataSet></merger>

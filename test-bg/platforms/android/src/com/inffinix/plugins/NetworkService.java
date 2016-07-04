@@ -3,7 +3,6 @@ package com.inffinix.plugins;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -60,6 +59,7 @@ public class NetworkService extends BackgroundService implements GoogleApiClient
     private List< JSONObject > JSONelements = new ArrayList<JSONObject>();
     private List< String > response;
     Iterator< JSONObject > iterator;
+    private FileToSendDAO fileToSendDAO;
 
     //Location
     private String uriLocation = null;
@@ -203,7 +203,6 @@ public class NetworkService extends BackgroundService implements GoogleApiClient
         if ( !mRequestingLocationUpdates ) {
             configurationTrackingDAO = new ConfigurationTrackingDAOImple(this);
             configurationTracking = configurationTrackingDAO.getConfig();
-            System.out.println( "informacion obtenida" + configurationTracking );
             setDataLocation();
             startLocationUpdates();
             mRequestingLocationUpdates = true;
