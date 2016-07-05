@@ -19,11 +19,6 @@ function handleResult( data ) {
         for( var i = 0; i < data.LatestResult.files.length; i++ ) {
             var element = data.LatestResult.files[ i ];
             console.log( 'element: ' + JSON.stringify( element ) );
-            if( element.replied == '[success]' ) {
-                console.log( 'element OK: ' + JSON.stringify( element ) );
-            } else {
-                console.log( 'element ERROR: ' + JSON.stringify( element ) );
-            }
         };
     }
 }
@@ -95,15 +90,15 @@ var num = 0;
 function setConfig() {
     console.log('-------------- setConfig ----------------');
     var objeto = {
-        'filePath' : '/storage/emulated/0/DCIM/Camera/IMG_20160606_122115523.jpg',
+        'filePath' : '/storage/emulated/0/DCIM/Camera/IMG_20160704_163900595.jpg',
         'server' : 'http://200.76.163.199:8009/d2dmobile/D2DAppUploadDocument',
-        'fileName' : 'IMG_20160606_122115523.jpg',
+        'fileName' : 'IMG_20160704_163900595.jpg',
         'params' : {
-            'group' : '1',
-            'account' : '100095097',
-            'description' : 'desde android bg',
+            'password' : 'secret',
             'login' : 'ffricke',
-            'password' : 'secret'
+            'group' : '6',
+            'account' : '101670007816939',
+            'description' : 'desde android bg'
         }
     };
     setConfiguration( objeto );
