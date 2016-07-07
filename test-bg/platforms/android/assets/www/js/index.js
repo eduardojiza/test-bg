@@ -90,7 +90,8 @@ var num = 0;
 function setConfig() {
     console.log('-------------- setConfig ----------------');
     var objeto = {
-        'filePath' : '/storage/emulated/0/DCIM/Camera/IMG_20160704_163900595.jpg',
+        //'filePath' : '/storage/emulated/0/DCIM/Camera/IMG_20160704_163900595.jpg',v
+        'filePath' : '/storage/emulated/0/DCIM/Camera/equifax.png',
         'server' : 'http://200.76.163.199:8009/d2dmobile/D2DAppUploadDocument',
         'fileName' : 'IMG_20160704_163900595.jpg',
         'params' : {
@@ -98,7 +99,7 @@ function setConfig() {
             'login' : 'ffricke',
             'group' : '6',
             'account' : '101670007816939',
-            'description' : 'desde android bg'
+            'description' : 'desde android bg samsung'
         }
     };
     setConfiguration( objeto );
